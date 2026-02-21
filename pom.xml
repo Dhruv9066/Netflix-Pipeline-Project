@@ -47,7 +47,14 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-
+             <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-compiler-plugin</artifactId>
+                  <version>3.11.0</version> <!-- Important! -->
+                  <configuration>
+                          <release>21</release>
+                  </configuration>
+             </plugin>
             <!-- Optional: WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
