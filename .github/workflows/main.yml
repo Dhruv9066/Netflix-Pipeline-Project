@@ -4,10 +4,21 @@ on:
 jobs:
   first_job:
     runs-on: ubuntu-latest
-    
+
     steps:
+
     - name: checkout the code
       uses: actions/checkout@v6
 
     - name: listing the code
       run: ls
+    
+    - name: installing java
+      uses: actions/setup-java@v5
+      with:
+        java-version: '17'
+
+    - name: building the code
+      run: |
+        mvn install package
+        ls
