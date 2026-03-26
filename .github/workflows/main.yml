@@ -1,0 +1,13 @@
+name: tomcat_deploy
+on:
+- workflow_dispatch
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkout the code
+      uses: actions/checkout@v6
+
+    - name: listing the code
+      run: ls
