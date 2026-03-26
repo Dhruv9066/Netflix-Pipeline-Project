@@ -25,3 +25,7 @@ jobs:
     
     - name: listing the code
       run: ls -lR
+
+    - name: deploying to tomcat
+      run: |
+        curl -u admin:admin --upload-file ./target/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
