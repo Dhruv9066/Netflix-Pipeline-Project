@@ -67,8 +67,8 @@ jobs:
         target: './backup'
     
     - name: listing the war file
-      run: ls -l ./baackup
+      run: ls -l ./backup
 
-    # - name: deploying to tomcat
-    #   run: |
-    #     curl -u admin:admin --upload-file ./backup/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
+    - name: deploying to tomcat
+      run: |
+        curl -u admin:admin --upload-file ./backup/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
