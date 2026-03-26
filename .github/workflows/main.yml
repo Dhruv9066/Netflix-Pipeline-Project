@@ -45,6 +45,15 @@ jobs:
     
     - name: Listing the artifact
       run: ls -l /opt
+
+    - name: upload to s3
+      uses: shallwefootball/s3-upload-action@master
+      with:
+        aws_key_id: ${{ secrets.ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY}}
+        aws_bucket: ${{ vars.BUCKET_NAME}}
+        source_dir: /opt/NETFLIX-1.2.3.war
+        destination_dir: /app
       
     # - name: deploying to tomcat
     #   run: |
