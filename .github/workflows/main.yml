@@ -44,7 +44,7 @@ jobs:
         path: /opt/
     
     - name: Listing the artifact
-      run: ls -lR /opt
+      run: ls -l /opt
       
     # - name: deploying to tomcat
     #   run: |
