@@ -67,7 +67,7 @@ jobs:
         target: '/opt'
     
     - name: listing the war file
-      run: ls -l /opt
+      run: ls -l /opt/target
 
     - name: deploying to tomcat
       run: |
