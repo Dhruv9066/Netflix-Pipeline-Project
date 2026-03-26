@@ -44,7 +44,7 @@ jobs:
         path: /opt/target/
     
     - name: Listing the artifact
-      run: ls -l /opt
+      run: ls -l /opt/target
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
