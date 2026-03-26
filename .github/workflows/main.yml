@@ -21,5 +21,7 @@ jobs:
 
     - name: building the code
       run: |
-        mvn install package
-        ls
+        mvn clean package
+    
+    - name: listing the code
+      run: ls
