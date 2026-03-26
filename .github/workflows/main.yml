@@ -56,15 +56,16 @@ jobs:
     - name: Upload to S3
       run: |
          aws s3 cp /opt/target s3://${{ vars.BUCKET_NAME }}/app --recursive
+    
+    - uses: joutvhu/download-s3@v1
+      with:
+        aws_access_key_id: ${{ secrets.ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
+        aws_region: us-east-1
+        aws_bucket: ${{ vars.BUCKET_NAME }}
+        source: '/app/*.war'
+        target: './backup'
 
-    # - uses: joutvhu/download-s3@v1
-    # with:
-    #   aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #   aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #   aws_region: us-east-1
-    #   aws_bucket: ${{ secrets.AWS_BUCKET }}
-    #   source: ''
-    #   target: './backup'
-    # - name: deploying to tomcat
-    #   run: |
-    #     curl -u admin:admin --upload-file ./target/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
+    - name: deploying to tomcat
+      run: |
+        curl -u admin:admin --upload-file ./backup/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
