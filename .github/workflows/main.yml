@@ -71,4 +71,4 @@ jobs:
 
     - name: deploying to tomcat
       run: |
-        curl -u admin:admin --upload-file /opt/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
+        curl -u admin:admin --upload-file /opt/target/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
