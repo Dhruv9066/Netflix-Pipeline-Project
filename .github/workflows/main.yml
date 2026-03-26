@@ -67,8 +67,8 @@ jobs:
         target: '/opt'
     
     - name: listing the war file
-      run: ls -l ./opt
+      run: ls -l /opt
 
     - name: deploying to tomcat
       run: |
-        curl -u admin:admin --upload-file ./opt/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
+        curl -u admin:admin --upload-file /opt/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
