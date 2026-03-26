@@ -41,7 +41,7 @@ jobs:
       uses: actions/download-artifact@v8
       with:
         name: my-artifact
-        path: /opt/
+        path: /opt/target/
     
     - name: Listing the artifact
       run: ls -l /opt
@@ -52,9 +52,18 @@ jobs:
         aws_key_id: ${{ secrets.ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY}}
         aws_bucket: ${{ vars.BUCKET_NAME}}
-        source_dir: /opt/NETFLIX-1.2.3.war
+        source_dir: /opt/target/*
         destination_dir: /app
-      
+
+
+    # - uses: joutvhu/download-s3@v1
+    # with:
+    #   aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #   aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #   aws_region: us-east-1
+    #   aws_bucket: ${{ secrets.AWS_BUCKET }}
+    #   source: ''
+    #   target: './backup'
     # - name: deploying to tomcat
     #   run: |
     #     curl -u admin:admin --upload-file ./target/*.war "http://100.55.169.24:8080/manager/text/deploy?path=/myapp&update=true"
