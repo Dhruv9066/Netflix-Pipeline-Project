@@ -24,4 +24,4 @@ jobs:
         mvn clean package
     
     - name: listing the code
-      run: ls
+      run: ls -lR
