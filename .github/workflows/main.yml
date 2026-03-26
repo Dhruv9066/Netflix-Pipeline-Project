@@ -46,15 +46,16 @@ jobs:
     - name: Listing the artifact
       run: ls -l /opt
 
-    - name: upload to s3
-      uses: shallwefootball/s3-upload-action@master
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws_key_id: ${{ secrets.ACCESS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY}}
-        aws_bucket: ${{ vars.BUCKET_NAME}}
-        source_dir: /opt/target
-        destination_dir: /app
+        aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
 
+    - name: Upload to S3
+      run: |
+         aws s3 cp /opt/target s3://${{ vars.BUCKET_NAME }}/app --recursive
 
     # - uses: joutvhu/download-s3@v1
     # with:
